@@ -41,7 +41,9 @@ class DetailsPage extends StatelessWidget {
                     ],
                   ),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     icon: Icon(Icons.arrow_back_ios_new),
                   ),
                 ),
