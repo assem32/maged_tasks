@@ -60,7 +60,6 @@ class GlobalCubit extends Cubit<GlobalState> {
 
     }).then((value) {
       product=value.data['products'];
-      print(product);
       emit(GetProductSuccessState());
     });
   }
@@ -72,7 +71,6 @@ class GlobalCubit extends Cubit<GlobalState> {
 
     }).then((value) {
       helpList=value.data['help'];
-      print(helpList);
       emit(GetHelpSuccessState());
     });
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:magedsoft/business_logic/global_cubit/global_cubit.dart';
+import 'package:magedsoft/presentation/screens/shared/component.dart';
 
 class HelpPage extends StatelessWidget {
   const HelpPage({Key? key}) : super(key: key);
@@ -55,23 +56,9 @@ class HelpPage extends StatelessWidget {
                       ), separatorBuilder: (context,state)=>SizedBox(height: 20,), itemCount: GlobalCubit.get(context).helpList.length)),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: width*0.172093023255814,vertical: height*0.027190332326284),
-                        child: Container(
-
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              gradient: LinearGradient(
-                                colors: [Color(0xff0062BD), Color(0xff0062BD).withOpacity(0.5),Color(0xff0062BD).withOpacity(0.25)],
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              )
-                          ),
-                          child: MaterialButton(
-
-                            minWidth: double.infinity,
-                            onPressed: (){
-
-                            },child: Text('Continue'),),
-                        ),
+                        child: defaultButton((){
+                          Navigator.pop(context);
+                        }, 'Continue'),
                       )
                     ],
                   ),
