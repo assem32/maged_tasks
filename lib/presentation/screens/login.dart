@@ -177,7 +177,15 @@ class LoginPage extends StatelessWidget {
                                 ),
                                 Text('Welcome',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.06976744186),),
                                 SizedBox(
-                                  height: MediaQuery.of(context).size.height*0.0781049935979513,
+                                  height: MediaQuery.of(context).size.height*0.0151057401812689,
+                                ),
+                                Container(
+                                  color: Color(0xff0062BD).withOpacity(0.72),
+                                  width: MediaQuery.of(context).size.width*0.3325581395348837,
+                                  height: MediaQuery.of(context).size.height*0.0030211480362538,
+                                ),
+                                SizedBox(
+                                  height: MediaQuery.of(context).size.height*0.040281973816717,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 45),
