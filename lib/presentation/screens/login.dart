@@ -175,12 +175,7 @@ class LoginPage extends StatelessWidget {
                                 SizedBox(
                                   height: MediaQuery.of(context).size.height*0.0384122919334187,
                                 ),
-                                InkWell(
-                                  child: Text('Welcome',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.06976744186),),
-                                  onTap: (){
-                                    print( MediaQuery.of(context).size.height);
-                                  },
-                                ),
+                                Text('Welcome',style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.06976744186),),
                                 SizedBox(
                                   height: MediaQuery.of(context).size.height*0.0781049935979513,
                                 ),
@@ -212,24 +207,10 @@ class LoginPage extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 44),
-                                  child: Container(
-
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        gradient: LinearGradient(
-                                          colors: [Color(0xff0062BD), Color(0xff0062BD).withOpacity(0.5),Color(0xff0062BD).withOpacity(0.25)],
-                                          begin: Alignment.centerLeft,
-                                          end: Alignment.centerRight,
-                                        )
-                                    ),
-                                    child: MaterialButton(
-
-                                      minWidth: double.infinity,
-                                      onPressed: (){
-                                        if(_formKey.currentState!.validate())
-                                          GlobalCubit.get(context).login(phoneController.text, nameController.text);
-                                      },child: Text('Login'),),
-                                  ),
+                                  child: defaultButton((){
+                                    if(_formKey.currentState!.validate())
+                                      GlobalCubit.get(context).login(phoneController.text, nameController.text);
+                                  },'Login'),
                                 )
                               ],
                             ),

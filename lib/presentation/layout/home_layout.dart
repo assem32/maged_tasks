@@ -66,6 +66,7 @@ class HomeLayout extends StatelessWidget {
                                         fillColor: Colors.white,
                                         filled: true,
                                         border: InputBorder.none,
+                                        suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.search,color: Color(0xffB1B1B1),)),
                                         labelText: 'Search',
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(color: Colors.transparent),
@@ -95,7 +96,7 @@ class HomeLayout extends StatelessWidget {
                                 ),
                                 child: IconButton(
                                     onPressed: () {},
-                                    icon: Icon(Icons.filter_alt_rounded)))
+                                    icon: Icon(Icons.filter_alt_rounded,color: Color(0xffB1B1B1),)))
                           ],
                         ),
                       ),
@@ -135,48 +136,24 @@ class HomeLayout extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              Container(
-                                  width: width * 0.3,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Row(
-                                      children: [
-                                        Icon(Icons.cloud_upload),
-                                        SizedBox(
-                                          width: width * 0.0302325581395349,
-                                        ),
-                                        Text('All'),
-                                      ],
-                                    ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(25),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 2,
-                                        blurRadius: 5,
-                                        offset: Offset(0,
-                                            3), // changes the position of the shadow
-                                      ),
-                                    ],
-                                  )),
+                              chooseCategory(
+                                width: width,text: 'All',path: 'assets/images/vector-trophy-cup-icon 2.png',selected: true
+                              ),
                               SizedBox(
                                 width: width * 0.0581395348837209,
                               ),
                               chooseCategory(
-                                  width: width, icon: Icons.ac_unit, text: 'Acer'),
+                                  width: width, path: ('assets/images/acer.png'), text: 'Acer'),
                               SizedBox(
                                 width: width * 0.0581395348837209,
                               ),
                               chooseCategory(
-                                  width: width, icon: Icons.ac_unit, text: 'Razer'),
+                                  width: width, path: ('assets/images/Razer-Logo 2.png'), text: 'Razer'),
                               SizedBox(
                                 width: width * 0.0581395348837209,
                               ),
                               chooseCategory(
-                                  width: width, icon: Icons.ac_unit, text: 'Apple'),
+                                  width: width, path: ('assets/images/ios 1.png'), text: 'Apple'),
                             ],
                           ),
                         ),
@@ -217,6 +194,7 @@ class HomeLayout extends StatelessWidget {
                                   )));
                                 },
                                 child: Container(
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(15),
@@ -232,23 +210,52 @@ class HomeLayout extends StatelessWidget {
                                   ),
                                   height: height * 0.2406847935548842,
                                   width: width * 0.3906976744186047,
-                                  child: Column(
+                                  child: Stack(
+                                    alignment: Alignment.bottomRight,
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(2),
-                                        child: Image(
-                                            height:height*0.1450151057401813,
-                                            width:width*0.3348837209302326,
-                                            image: NetworkImage('${GlobalCubit.get(context).product[index]['image']}'),fit: BoxFit.fill,),
-                                      ),
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text('${GlobalCubit.get(context).product[index]['company']}',style: TextStyle(color: Color(0xff0062BD),fontSize: width*0.0418604651162791),),
-                                          Text('${GlobalCubit.get(context).product[index]['name']}',style: TextStyle(fontSize: width*0.027906976744186),),
-                                          Text('${GlobalCubit.get(context).product[index]['price']}',style: TextStyle(fontSize: width*0.0232558139534884),),
+                                          Padding(
+                                            padding: const EdgeInsets.all(2),
+                                            child: Image(
+                                                height:height*0.1591137965760322,
+                                                width:width*0.3674418604651163,
+                                                image: NetworkImage('${GlobalCubit.get(context).product[index]['image']}'),fit: BoxFit.fill,),
+                                          ),
+                                          Padding(
+                                            padding:  EdgeInsets.symmetric(horizontal: width*0.0209302325581395),
+                                            child: Row(
+                                              children: [
+                                                Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text('${GlobalCubit.get(context).product[index]['company']}',style: TextStyle(color: Color(0xff0062BD),fontSize: width*0.0418604651162791),),
+                                                    Text('${GlobalCubit.get(context).product[index]['name']}',style: TextStyle(fontSize: width*0.027906976744186),),
+                                                    Text('${GlobalCubit.get(context).product[index]['price']}',style: TextStyle(fontSize: width*0.0232558139534884),),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ],
                                       ),
+                                      Container(
+                                        width: height*0.040281973816717,
+                                        height: height*0.040281973816717,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(topLeft: Radius.circular(20)),
+                                          gradient: LinearGradient(
+                                            colors: [Color(0xFF0062BD).withOpacity(1), Color(0xFF0062BD).withOpacity(0.5)],
+                                            // Set your desired gradient colors
+                                            begin: Alignment.topLeft,
+                                            
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:  EdgeInsets.only(right:width*0.0325581395348837 ),
+                                          child: IconButton(onPressed: (){}, icon: Icon(Icons.add,size: width*0.0325581395348837,color: Colors.white,)),
+                                        ),
+                                      )
                                     ],
                                   ),
                                 ),

@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
                     onGenerateRoute: widget.appRouter.onGenerateRoute,
                     theme: ThemeData(
 
-                      fontFamily: 'cairo',
+                      fontFamily: 'Inter',
                       //scaffoldBackgroundColor: AppColors.white,
                       appBarTheme: const AppBarTheme(
                         elevation: 0.0,

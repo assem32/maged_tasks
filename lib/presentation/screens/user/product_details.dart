@@ -27,28 +27,37 @@ class DetailsPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: Offset(0, 3), // changes the position of the shadow
+                Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: width*0.0534883720930233),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // changes the position of the shadow
+                            ),
+                          ],
+                        ),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(Icons.arrow_back_ios_new),
+                        ),
                       ),
+                      Text('$name',style: TextStyle(color: Colors.white,fontSize: MediaQuery.of(context).size.width*0.0581395348837209,fontWeight: FontWeight.w700),),
+                      Text('$type',style: TextStyle(color: Colors.white,fontSize: MediaQuery.of(context).size.width*0.0348837209302326)),
                     ],
                   ),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.arrow_back_ios_new),
-                  ),
                 ),
-                Text('$name',style: TextStyle(color: Colors.white,fontSize: MediaQuery.of(context).size.width*0.0581395348837209),),
-                Text('$type',style: TextStyle(color: Colors.white,fontSize: MediaQuery.of(context).size.width*0.0348837209302326)),
                 SizedBox(
                   height: 8,
                 ),

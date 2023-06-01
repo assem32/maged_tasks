@@ -56,25 +56,9 @@ class OTPPage extends StatelessWidget {
                   Spacer(),
                   TextButton(onPressed: (){}, child: Text('Resend Code')),
                   Padding(padding: EdgeInsets.symmetric(horizontal: width*0.1023255813953488),
-                    child: Container(
-
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          gradient: LinearGradient(
-                            colors: [Color(0xff0062BD), Color(0xff0062BD).withOpacity(0.5),Color(0xff0062BD).withOpacity(0.25)],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          )
-                      ),
-                      child: MaterialButton(
-
-                        minWidth: double.infinity,
-                        onPressed: (){
-                          print(first.text+seconed.text+third.text);
-                          GlobalCubit.get(context).otpVerify(first.text+seconed.text+third.text+fourth.text, GlobalCubit.get(context).phoneCub);
-                          // GlobalCubit.get(context).login(phoneController.text, nameController.text);
-                        },child: Text('Verify'),),
-                    ),),
+                    child: defaultButton((){
+                      GlobalCubit.get(context).otpVerify(first.text+seconed.text+third.text+fourth.text, GlobalCubit.get(context).phoneCub);
+                    }, 'Verify'),),
                   SizedBox(
                     height: height*0.0916414904330312,
                   )

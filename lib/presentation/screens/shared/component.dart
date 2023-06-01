@@ -33,21 +33,38 @@ Widget defaultFormFiled({label,context,controller,keyboard,Function(String)? val
                           ),
                         );
 
-Widget chooseCategory({width,text,icon})=>Container(
+Widget chooseCategory({width,text,path,selected})=>Container(
     width: width*0.3,
     child: Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding:  EdgeInsets.all(width*0.013953488372093),
       child: Row(
-        children: [Icon(icon),
+        children: [Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(50),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 3), // changes the position of the shadow
+                ),
+              ]
+          ),
+            child: Padding(
+              padding:  EdgeInsets.all(width*0.013953488372093),
+              child: Image.asset( '$path',width: width*0.0651162790697674,height:width*0.0651162790697674),
+            )
+        ),
           SizedBox(
             width: width*0.0302325581395349,
           ),
-          Text('$text'),
+          Text('$text',style: TextStyle(color: selected==true?Colors.white:Colors.black),),
         ],
       ),
     ),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: selected==true?Color(0xff0062BD):Colors.white,
       borderRadius: BorderRadius.circular(25),
       boxShadow: [
         BoxShadow(
@@ -94,4 +111,22 @@ Widget otpFormFiled({width,height,controller,context})=>Container(
       FilteringTextInputFormatter.digitsOnly
     ],
   ),
+);
+
+Widget defaultButton(function,text)=>Container(
+
+  decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(50),
+      gradient: LinearGradient(
+        colors: [Color(0xff0062BD), Color(0xff0062BD).withOpacity(0.5),Color(0xff0062BD).withOpacity(0.25)],
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+      )
+  ),
+  child: MaterialButton(
+
+    minWidth: double.infinity,
+    onPressed: (){
+      function();
+    },child: Text('$text',style: TextStyle(color: Colors.white),),),
 );
