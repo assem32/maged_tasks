@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:magedsoft/business_logic/global_cubit/global_cubit.dart';
+import 'package:magedsoft/constants/page_const.dart';
 import 'package:magedsoft/presentation/layout/home_layout.dart';
 import 'package:magedsoft/presentation/screens/shared/component.dart';
-import 'package:magedsoft/presentation/screens/user/otp.dart';
+import 'package:magedsoft/presentation/view/otp.dart';
 
 final _formKey = GlobalKey<FormState>();
 var nameController=TextEditingController();
@@ -17,7 +18,7 @@ class LoginPage extends StatelessWidget {
     return BlocConsumer<GlobalCubit,GlobalState>(
       listener: (context,state){
         if(state is VerifySuccessState){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>OTPPage()));
+          Navigator.pushNamed(context, otp);
         }
       },
       builder: (context,state){

@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:magedsoft/business_logic/global_cubit/global_cubit.dart';
-import 'package:magedsoft/presentation/screens/login.dart';
+import 'package:magedsoft/constants/page_const.dart';
+import 'package:magedsoft/presentation/view/login.dart';
 import 'package:magedsoft/presentation/screens/shared/component.dart';
-import 'package:magedsoft/presentation/screens/user/help.dart';
-import 'package:magedsoft/presentation/screens/user/product_details.dart';
+import 'package:magedsoft/presentation/view/help.dart';
+import 'package:magedsoft/presentation/view/product_details.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class HomeLayout extends StatelessWidget {
       child: BlocConsumer<GlobalCubit,GlobalState>(
         listener: (context,state){
           if (state is HelpPageState){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>HelpPage()));
+            Navigator.pushNamed(context, help);
           }
           if(state is LogoutState){
             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>LoginPage()), (route) => false);
@@ -185,13 +186,19 @@ class HomeLayout extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
                                 onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailsPage(company: cubit.product[index]['company'],
-                                    networkImage: cubit.product[index]['image'],
-                                    price: cubit.product[index]['price'],
-                                    text: cubit.product[index]['description'],
-                                    type: cubit.product[index]['name'],
-                                    name: cubit.product[index]['type'],
-                                  )));
+                                  Navigator.pushNamed(context, laptopDetails,arguments: [cubit.product[index]['image'],cubit.product[index]['description'],
+                                    cubit.product[index]['company'],
+                                    cubit.product[index]['price'],
+                                    cubit.product[index]['type'],
+                                    cubit.product[index]['type'],
+                                  ]);
+                                  // Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailsPage(company: cubit.product[index]['company'],
+                                  //   networkImage: cubit.product[index]['image'],
+                                  //   price: cubit.product[index]['price'],
+                                  //   text: cubit.product[index]['description'],
+                                  //   type: cubit.product[index]['name'],
+                                  //   name: cubit.product[index]['type'],
+                                  // )));
                                 },
                                 child: Container(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,

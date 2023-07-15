@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:magedsoft/constants/end_points.dart';
+import 'package:magedsoft/constants/page_const.dart';
 import 'package:magedsoft/data/data_providers/remote/dio_helper.dart';
 
 part 'global_state.dart';
@@ -26,7 +28,7 @@ class GlobalCubit extends Cubit<GlobalState> {
   var codeCub;
   var phoneCub;
   void login(phone,name){
-    DioHelper.postData(url: 'api/verifyPhone', body: {
+    DioHelper.postData(url: phoneVerfication, body: {
       'phone':phone,
       'name':name
     }).then((value) {
@@ -40,7 +42,7 @@ class GlobalCubit extends Cubit<GlobalState> {
   }
 
   void otpVerify(code,phone){
-    DioHelper.postData(url: 'api/verifyPhone', body: {
+    DioHelper.postData(url: otpVerfication, body: {
       'code':code,
       'phone':phone
     }).then((value) {
@@ -56,7 +58,7 @@ class GlobalCubit extends Cubit<GlobalState> {
   
   List product=[];
   void getProduct(){
-    DioHelper.getData(url: 'api/getProducts', query: {
+    DioHelper.getData(url: getProductApi, query: {
 
     }).then((value) {
       product=value.data['products'];

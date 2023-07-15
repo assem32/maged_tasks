@@ -6,14 +6,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:magedsoft/business_logic/bloc_observer.dart';
 import 'package:magedsoft/business_logic/global_cubit/global_cubit.dart';
+import 'package:magedsoft/constants/page_const.dart';
 import 'package:magedsoft/data/data_providers/local/cache_helper.dart';
 import 'package:magedsoft/data/data_providers/remote/dio_helper.dart';
 import 'package:magedsoft/presentation/layout/home_layout.dart';
 import 'package:magedsoft/presentation/router/app_router.dart';
-import 'package:magedsoft/presentation/screens/login.dart';
-import 'package:magedsoft/presentation/screens/user/help.dart';
-import 'package:magedsoft/presentation/screens/user/otp.dart';
-import 'package:magedsoft/presentation/screens/user/product_details.dart';
+import 'package:magedsoft/presentation/view/login.dart';
+import 'package:magedsoft/presentation/view/help.dart';
+import 'package:magedsoft/presentation/view/otp.dart';
+import 'package:magedsoft/presentation/view/product_details.dart';
 import 'package:magedsoft/presentation/widget/toast.dart';
 
 import 'package:sizer/sizer.dart';
@@ -101,6 +102,7 @@ class _MyAppState extends State<MyApp> {
                     locale: delegate.currentLocale,
                     supportedLocales: delegate.supportedLocales,
                     onGenerateRoute: widget.appRouter.onGenerateRoute,
+                    initialRoute: login,
                     theme: ThemeData(
 
                       fontFamily: 'Inter',
@@ -113,7 +115,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
-                    home: LoginPage(),
+                    // home: LoginPage(),
                   );
                 }),
               );
