@@ -68,7 +68,7 @@ class _MyAppState extends State<MyApp> {
           Intl.defaultLocale = value.languageCode;
         });
       } catch (e) {
-        showToast(e.toString());
+        showToast(e.toString(),context);
       }
     };
   }

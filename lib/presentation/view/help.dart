@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:magedsoft/business_logic/global_cubit/global_cubit.dart';
 import 'package:magedsoft/presentation/screens/shared/component.dart';
+import 'package:magedsoft/presentation/styles/colors.dart';
+import 'package:magedsoft/presentation/widget/button.dart';
 
 class HelpPage extends StatelessWidget {
   const HelpPage({Key? key}) : super(key: key);
@@ -30,7 +32,8 @@ class HelpPage extends StatelessWidget {
                   child: Column(
                     children: [
                       Text('Help',style: TextStyle(color: Colors.white,fontSize: 30),),
-                      Expanded(child: ListView.separated(itemBuilder: (context,index)=>Padding(
+
+                      GlobalCubit.get(context).helpList.isEmpty?CircularProgressIndicator(color: AppColor.blue,):Expanded(child: ListView.separated(itemBuilder: (context,index)=>Padding(
                         padding: EdgeInsets.symmetric(horizontal: width*0.0395348837209302,vertical: height*0.027190332326284),
                         child: Container(
                           decoration: BoxDecoration(

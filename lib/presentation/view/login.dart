@@ -4,7 +4,12 @@ import 'package:magedsoft/business_logic/global_cubit/global_cubit.dart';
 import 'package:magedsoft/constants/page_const.dart';
 import 'package:magedsoft/presentation/layout/home_layout.dart';
 import 'package:magedsoft/presentation/screens/shared/component.dart';
+import 'package:magedsoft/presentation/styles/assets_manger.dart';
+import 'package:magedsoft/presentation/styles/colors.dart';
 import 'package:magedsoft/presentation/view/otp.dart';
+import 'package:magedsoft/presentation/widget/button.dart';
+import 'package:magedsoft/presentation/widget/text_formfield.dart';
+import 'package:magedsoft/presentation/widget/toast.dart';
 
 final _formKey = GlobalKey<FormState>();
 var nameController=TextEditingController();
@@ -18,6 +23,7 @@ class LoginPage extends StatelessWidget {
     return BlocConsumer<GlobalCubit,GlobalState>(
       listener: (context,state){
         if(state is VerifySuccessState){
+          showToast('your otp is ${state.otpCode}',context);
           Navigator.pushNamed(context, otp);
         }
       },
@@ -29,10 +35,15 @@ class LoginPage extends StatelessWidget {
             child: Stack(
               children: [
                 SingleChildScrollView(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width ,
-                    color: Colors.blue,
+                  child: Stack(
+                    children: [
+                      Image.asset(AssetsManger.background,fit: BoxFit.fitHeight),
+                      Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width ,
+                        color: Colors.blue.withOpacity(0.5),
+                      ),
+                    ],
                   ),
                 ),
                 Align(
@@ -59,15 +70,18 @@ class LoginPage extends StatelessWidget {
                                 child: Container(
                                   height: 1,
                                   width: double.infinity,
-                                  color: Colors.grey,
+                                  color: AppColor.lightBlue,
                                 ),
                               ),
-                              Text('OR'),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 4),
+                                child: Text('OR',style: TextStyle(color: AppColor.lightBlue),),
+                              ),
                               Expanded(
                                 child: Container(
                                   height: 1,
                                   width: double.infinity,
-                                  color: Colors.grey,
+                                  color: AppColor.lightBlue,
                                 ),
                               ),
                             ],

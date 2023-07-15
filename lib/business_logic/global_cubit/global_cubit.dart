@@ -34,7 +34,8 @@ class GlobalCubit extends Cubit<GlobalState> {
     }).then((value) {
       phoneCub=phone;
       codeCub=value.data['code'];
-      emit(VerifySuccessState());
+
+      emit(VerifySuccessState(codeCub));
     }).catchError((error){
       print(error.toString());
       emit(VerifyErrorState());

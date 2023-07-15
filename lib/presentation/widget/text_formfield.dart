@@ -13,6 +13,9 @@ Widget defaultFormFiled({label,context,controller,keyboard,Function(String)? val
     ],
   ),
   child: TextFormField(
+    focusNode: FocusNode(
+
+    ),
     validator: (v){
       return validate!(v!);
     },

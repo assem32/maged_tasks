@@ -11,7 +11,11 @@ class HelpPageState extends GlobalState {}
 
 class LogoutState extends GlobalState {}
 
-class VerifySuccessState extends GlobalState {}
+class VerifySuccessState extends GlobalState {
+  final String otpCode;
+  VerifySuccessState(this.otpCode);
+
+}
 
 class VerifyErrorState extends GlobalState {}
 

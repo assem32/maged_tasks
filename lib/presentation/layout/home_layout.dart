@@ -7,6 +7,7 @@ import 'package:magedsoft/presentation/view/login.dart';
 import 'package:magedsoft/presentation/screens/shared/component.dart';
 import 'package:magedsoft/presentation/view/help.dart';
 import 'package:magedsoft/presentation/view/product_details.dart';
+import 'package:magedsoft/presentation/widget/category.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({Key? key}) : super(key: key);
@@ -170,7 +171,7 @@ class HomeLayout extends StatelessWidget {
                           ),
                         ],
                       ),
-                      GridView.builder(
+                      GlobalCubit.get(context).product.isEmpty?CircularProgressIndicator():GridView.builder(
                         padding: EdgeInsets.only(bottom: 50),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,

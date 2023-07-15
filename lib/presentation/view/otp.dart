@@ -4,6 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:magedsoft/business_logic/global_cubit/global_cubit.dart';
 import 'package:magedsoft/presentation/layout/home_layout.dart';
 import 'package:magedsoft/presentation/screens/shared/component.dart';
+import 'package:magedsoft/presentation/widget/button.dart';
+import 'package:magedsoft/presentation/widget/otp_form.dart';
+import 'package:magedsoft/presentation/widget/toast.dart';
 
 var first=TextEditingController();
 var seconed=TextEditingController();
@@ -20,6 +23,7 @@ class OTPPage extends StatelessWidget {
     return BlocConsumer<GlobalCubit,GlobalState>(
       listener: (context,state){
         if(state is VerifyOTPSuccessState){
+          showToast('Account Verified', context);
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>HomeLayout()), (route) => false);
         }
       },
